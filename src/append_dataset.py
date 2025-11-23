@@ -3,9 +3,6 @@ import random
 import os
 from datetime import datetime, timedelta
 
-# ------------------------------------------------
-# Your STT helper pools
-# ------------------------------------------------
 
 names = [
     "ramesh", "suresh", "john", "rohan", "priyanka", "pooja",
@@ -20,9 +17,7 @@ locations = ["bus stand", "railway station", "airport", "city center", "main mar
 digits = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
 
-# ------------------------------------------------
-# Helper functions to generate entities
-# ------------------------------------------------
+
 
 def random_phone_stt():
     return " ".join(random.choice(digits) for _ in range(10))
@@ -46,9 +41,6 @@ def random_date():
     return d.strftime("%d %B %Y").lower()
 
 
-# ------------------------------------------------
-# Templates
-# ------------------------------------------------
 
 templates = [
     "my email is {EMAIL}",
@@ -64,9 +56,6 @@ templates = [
 ]
 
 
-# ------------------------------------------------
-# Build a labeled or unlabeled sample
-# ------------------------------------------------
 
 def build_sample(idx, labeled=True):
     t = random.choice(templates)
@@ -127,9 +116,7 @@ def build_sample(idx, labeled=True):
     return {"id": f"utt_{idx:04d}", "text": text}
 
 
-# ------------------------------------------------
-# Append new samples to existing files
-# ------------------------------------------------
+
 
 def append_jsonl(path, items):
     with open(path, "a", encoding="utf-8") as f:
@@ -139,7 +126,6 @@ def append_jsonl(path, items):
 
 if __name__ == "__main__":
 
-    # You decide how many new samples to add
     NEW_TRAIN = 500
     NEW_DEV = 100
     NEW_TEST = 100
